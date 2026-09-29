@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+uploads/*
+!uploads/.gitkeep
+
+PlantVillage-Dataset/
+*.zip
+
+.vscode/
+
+.ipynb_checkpoints/

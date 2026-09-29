@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plant Health AI</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">🌿</span>
+            <span>Plant<span class="logo-highlight">Health</span> AI</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="nav-button">Analyze Plant</button>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    🌱 AI-Powered Plant Analysis
+                </div>
+
+                <h1>
+                    Keep Your Plants
+                    <span>Healthy & Happy</span>
+                </h1>
+
+                <p>
+                    Upload a photo of your plant leaf and let our AI
+                    analyze its health, detect possible diseases,
+                    and provide helpful care recommendations.
+                </p>
+
+                <div class="hero-features">
+
+                    <div>
+                        <span>🔍</span>
+                        <p>Disease Detection</p>
+                    </div>
+
+                    <div>
+                        <span>💧</span>
+                        <p>Care Guidance</p>
+                    </div>
+
+                    <div>
+                        <span>🤖</span>
+                        <p>AI Analysis</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Upload Card -->
+            <div class="upload-card">
+
+                <div class="upload-header">
+                    <h2>Analyze Your Plant</h2>
+                    <p>Upload a clear image of a leaf</p>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+
+                    <div class="upload-icon">
+                        📷
+                    </div>
+
+                    <h3>Drop your leaf image here</h3>
+
+                    <p>or</p>
+
+                    <label for="leafImage" class="upload-button">
+                        Choose Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="leafImage"
+                        accept="image/*"
+                        hidden
+                    >
+
+                    <small>
+                        JPG, PNG or WEBP • Max 10MB
+                    </small>
+
+                </div>
+
+                <!-- Image Preview -->
+                <div class="preview-container" id="previewContainer">
+
+                    <img id="imagePreview" alt="Leaf Preview">
+
+                    <button id="removeImage" class="remove-button">
+                        ×
+                    </button>
+
+                </div>
+
+                <button class="analyze-button" id="analyzeButton">
+                    <span>🔬</span>
+                    Analyze Plant
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- How It Works -->
+        <section class="how-it-works" id="how-it-works">
+
+            <div class="section-heading">
+
+                <span>HOW IT WORKS</span>
+
+                <h2>
+                    Plant Health Analysis
+                    <span>Made Simple</span>
+                </h2>
+
+                <p>
+                    Get useful information about your plant in just
+                    a few simple steps.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step-card">
+
+                    <div class="step-number">01</div>
+
+                    <div class="step-icon">📸</div>
+
+                    <h3>Upload</h3>
+
+                    <p>
+                        Take a clear picture of the affected leaf
+                        and upload it to our system.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">02</div>
+
+                    <div class="step-icon">🧠</div>
+
+                    <h3>AI Analysis</h3>
+
+                    <p>
+                        Our deep learning model analyzes the
+                        visual characteristics of the leaf.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">03</div>
+
+                    <div class="step-icon">📊</div>
+
+                    <h3>Get Results</h3>
+
+                    <p>
+                        View the predicted condition, confidence
+                        and recommended plant care.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+     PLANT ANALYSIS RESULT
+========================================== -->
+
+<section class="results-section" id="results">
+
+    <div class="section-heading">
+
+        <span>AI ANALYSIS</span>
+
+        <h2>
+            Plant Health
+            <span>Report</span>
+        </h2>
+
+        <p>
+            Here is the analysis generated by our AI system.
+        </p>
+
+    </div>
+
+
+    <div class="result-card">
+
+        <!-- Result Image -->
+        <div class="result-image-container">
+
+            <img
+                id="resultImage"
+                src=""
+                alt="Analyzed Plant"
+            >
+
+        </div>
+
+
+        <!-- Result Information -->
+        <div class="result-information">
+
+            <div class="result-top">
+
+                <div>
+
+                    <span class="result-label">
+                        PLANT IDENTIFIED
+                    </span>
+
+                    <h3 id="resultPlant">
+                        Tomato
+                    </h3>
+
+                </div>
+
+                <div
+                    class="health-status"
+                    id="healthStatus"
+                >
+                    🔴 Needs Attention
+                </div>
+
+            </div>
+
+
+            <!-- Disease -->
+            <div class="disease-box">
+
+                <span class="result-label">
+                    DETECTED CONDITION
+                </span>
+
+                <h4 id="resultDisease">
+                    Early Blight
+                </h4>
+
+            </div>
+
+
+            <!-- Confidence -->
+            <div class="confidence-section">
+
+                <div class="confidence-header">
+
+                    <span>
+                        AI Confidence
+                    </span>
+
+                    <strong id="resultConfidence">
+                        94.6%
+                    </strong>
+
+                </div>
+
+                <div class="confidence-bar">
+
+                    <div
+                        class="confidence-progress"
+                        id="confidenceProgress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Recommendations -->
+            <div class="recommendations">
+
+                <h4>
+                    🌱 Recommended Care
+                </h4>
+
+                <ul id="recommendationList">
+
+                    <li>
+                        💧 Check soil moisture
+                    </li>
+
+                    <li>
+                        ✂️ Remove severely affected leaves
+                    </li>
+
+                    <li>
+                        ☀️ Ensure adequate sunlight
+                    </li>
+
+                    <li>
+                        🌬️ Improve air circulation
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- About -->
+        <section class="about" id="about">
+
+            <div class="about-content">
+
+                <span class="section-label">ABOUT THE PROJECT</span>
+
+                <h2>
+                    Smarter Plant Care
+                    With <span>Deep Learning</span>
+                </h2>
+
+                <p>
+                    Plant Health AI is a deep learning project designed
+                    to help identify visible plant diseases from leaf
+                    images.
+                </p>
+
+                <p>
+                    The system uses image classification to identify
+                    possible plant conditions and provide useful
+                    guidance for plant care.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <div class="about-card-icon">🌱</div>
+
+                <h3>AI Plant Doctor</h3>
+
+                <p>
+                    Upload a leaf. Let AI do the analysis.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="logo">
+            🌿 Plant<span>Health</span> AI
+        </div>
+
+        <p>
+            Deep Learning Based Plant Health Detection
+        </p>
+
+        <p class="copyright">
+            © 2026 Plant Health AI. Academic Project.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
+
